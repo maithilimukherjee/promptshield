@@ -2,7 +2,7 @@
 
 A hybrid cybersecurity system combining rule-based detection and generative AI classification to identify, score, and mitigate prompt-injection and jailbreak attacks against LLM applications.
 
-## 📋 Overview
+## Overview
 
 PromptShield is a two-tier security engine designed to protect large language model (LLM) applications from malicious inputs. It combines fast, cost-effective rule-based detection with deep semantic analysis using LLM classifiers to provide comprehensive protection against:
 
@@ -11,7 +11,7 @@ PromptShield is a two-tier security engine designed to protect large language mo
 - **System Prompt Extraction**: Techniques to leak or expose system prompts
 - **Obfuscated Payloads**: Base64-encoded and other encoded malicious content
 
-## 🏗️ Architecture
+## Architecture
 
 PromptShield employs a **two-tier defense strategy**:
 
@@ -31,7 +31,7 @@ PromptShield employs a **two-tier defense strategy**:
   - Pydantic-validated structured output
   - Multi-category classification: `prompt_injection`, `jailbreak`, `system_extraction`, `none`
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -77,7 +77,7 @@ print(result)
 # }
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 promptshield/
@@ -91,7 +91,7 @@ promptshield/
 └── README.md                 # This file
 ```
 
-## 📊 Component Details
+## Component Details
 
 ### 1. Rule-Based Engine (`rule_based_engine.py`)
 
@@ -163,7 +163,7 @@ Orchestrates both tiers with intelligent routing:
 - `FLAG_FOR_REVIEW`: Manual review required (Tier 2 with low confidence)
 - `ALLOW`: Safe to process
 
-## 🧪 Testing & Benchmarking
+## Testing & Benchmarking
 
 ### Run Unit Tests
 
@@ -196,7 +196,7 @@ Tier 2 (LLM) Evaluated          : 55 prompts
 False Positives : 3 | False Negatives : 2
 ```
 
-## 🔧 Configuration Options
+## Configuration Options
 
 ### HybridEngine Parameters
 
@@ -210,7 +210,7 @@ engine = HybridEngine(
   - If LLM confidence ≥ threshold and is_malicious=True → BLOCK
   - If LLM confidence < threshold and is_malicious=True → FLAG_FOR_REVIEW
 
-## 📈 Performance Characteristics
+## Performance Characteristics
 
 | Metric | Tier 1 | Tier 2 | Hybrid |
 |--------|--------|--------|--------|
@@ -219,7 +219,7 @@ engine = HybridEngine(
 | Detection Type | Pattern-based | Semantic | Combined |
 | False Positives | Medium | Low | Very Low |
 
-## 🛡️ Security Features
+## Security Features
 
 - **Zero-Cost Fast Path**: Rule engine blocks ~40-50% of attacks instantly
 - **Semantic Defense**: LLM classifier catches sophisticated, obfuscated attacks
@@ -227,14 +227,7 @@ engine = HybridEngine(
 - **Audit Trail**: Every decision includes latency, tier, confidence, and reasoning
 - **Customizable Thresholds**: Tune balance between precision and recall
 
-## 🚨 Known Limitations
-
-- Requires internet connection for Tier 2 (Groq API)
-- API rate limits apply to Groq service
-- Rule patterns require manual updates for new attack vectors
-- Base64 detection may have false positives on legitimate encoded content
-
-## 📚 Dataset Integration
+## Dataset Integration
 
 The `dataset_setup.py` file provides integration with test datasets:
 
@@ -247,13 +240,13 @@ for prompt, label in zip(test_prompts, ground_truth_labels):
     # label: 1 = malicious, 0 = benign
 ```
 
-## 🔑 Environment Variables
+## Environment Variables
 
 - **GROQ_API_KEY**: Required for Tier 2 classification
   - Obtain from [Groq Console](https://console.groq.com)
   - Store in `.env` file (not in version control)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Areas for improvement:
 
@@ -264,15 +257,11 @@ Contributions are welcome! Areas for improvement:
 - [ ] Web API wrapper for REST/gRPC deployment
 - [ ] Detailed logging and observability
 
-## 📄 License
-
-MIT License - See LICENSE file for details
-
-## 👤 Author
+## Author
 
 [Maithili Mukherjee](https://github.com/maithilimukherjee)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built with [Groq](https://groq.com) for fast LLM inference
 - Inspired by security best practices in prompt engineering
